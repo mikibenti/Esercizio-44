@@ -22,7 +22,13 @@
             echo "<table border='1'>";
             echo "<tr><th>ID</th><th>Nome</th><th>Data Apertura</th></tr>";
             while($row = $result->fetch_assoc()) {
-                echo "<tr><td>" . $row["CodSala"] . "</td><td>" . $row["Nome"] . "</td><td>" . $row["DataApertura"] . "</td></tr>";
+                $value = $row["DataApertura"];
+                if ($value == NULL) {
+                    $value = "Data Sconosciuta";
+                } else {
+                    $value = $row["DataApertura"];
+                }
+                echo "<tr><td>" . $row["CodSala"] . "</td><td>" . $row["Nome"] . "</td><td>" . $value . "</td></tr>";
             }
             echo "</table>";
         } else {
